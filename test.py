@@ -25,8 +25,8 @@ inputs = processor(prompt, image).to("cuda:0", dtype=torch.bfloat16)
 
 # ===== Benchmark: 不同 chunk_size 下的推理耗时 =====
 # 原理：chunk_size=K 等效于生成 K*7 个 token，直接用 max_new_tokens=K*7 计时
-ACTION_DIM = 7
-CHUNK_SIZES = [1, 5, 10, 20, 50]
+ACTION_DIM = 14
+CHUNK_SIZES = [16, 32, 64, 128, 256, 512, 1024, 2048, 4096]
 WARMUP = 2
 REPEATS = 5
 
